@@ -1,16 +1,16 @@
 const express = require("express");
-require("dotenv").config();
+
+const envFile = process.env.NODE_ENV !== 'test' ? '.env' : '.env.test';
+require("dotenv").config({ path: envFile });
+
 const bodyParser = require("body-parser");
 const authRouter = require("./modules/auth/routes");
 const moviesRouter = require("./modules/movies/routes");
 const db = require("./db/db");
-
 const PORT = 3000;
-
 const app = express();
 
 app.use(bodyParser.json());
-
 app.use("/", authRouter);
 app.use("/", moviesRouter);
 

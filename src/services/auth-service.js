@@ -74,7 +74,7 @@ const extractToken = (header) => {
 const verifyToken = (token) => {
   try {
     const decoded = jwt.verify(token, JWT_SECRET);
-    console.log("decoded", decoded);
+
     return decoded;
   } catch (error) {
     console.log(error);
